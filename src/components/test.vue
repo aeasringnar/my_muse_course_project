@@ -1,6 +1,6 @@
 <template>
     <div>
-      <mu-appbar style="width: 100%;height: 3rem;" color="primary">
+      <mu-appbar style="width: 100%;height: 12vw;" color="primary">
         <mu-button icon slot="left" @click="open = !open">
           <mu-icon size="32" value="menu"></mu-icon>
         </mu-button>
@@ -33,15 +33,18 @@
         <mu-row>
           <mu-col span="4">
             <div class="grid-cell" @click="h">
-              <div><mu-icon :color="h_color" size="40" value="home"></mu-icon></div>
+              <!--<mu-icon :color="h_color" size="40" value="home"></mu-icon>-->
+              <img :src="home_url" alt="..." style="height: 85%">
             </div></mu-col>
           <mu-col span="4">
-            <div class="grid-cell" @click="g">
-              <mu-icon :color="g_color" size="40" value="grade"></mu-icon>
+            <div class="grid-cell" @click="c">
+              <!--<mu-icon :color="g_color" size="40" value="grade"></mu-icon>-->
+              <img :src="course_url" alt="..." style="height: 90%">
             </div></mu-col>
           <mu-col span="4">
-            <div class="grid-cell" @click="s">
-              <mu-icon :color="s_color" size="40" value="search"></mu-icon>
+            <div class="grid-cell" @click="u">
+              <!--<mu-icon :color="s_color" size="40" value="search"></mu-icon>-->
+              <img :src="user_url" alt="..." style="height: 85%">
             </div></mu-col>
         </mu-row>
       </div>
@@ -49,6 +52,12 @@
 </template>
 
 <script>
+    import home_no from '../static/icon/home_no.png'
+    import home from '../static/icon/home.png'
+    import course_no from '../static/icon/course_no.png'
+    import course from '../static/icon/course.png'
+    import user_no from '../static/icon/user_no.png'
+    import user from '../static/icon/user.png'
     export default {
       name: "test",
       data () {
@@ -58,24 +67,28 @@
           position: 'left',
           s_color: 'black',
           h_color: 'red',
-          g_color: 'black'
+          g_color: 'black',
+          // home_url: require('../static/icon/home_no.png')
+          home_url: home,
+          course_url: course_no,
+          user_url: user_no
         }
       },
       methods: {
         h() {
-          this.h_color = 'red'
-          this.g_color = 'black'
-          this.s_color = 'black'
+          this.home_url = home
+          this.course_url = course_no
+          this.user_url = user_no
         },
-        g() {
-          this.h_color = 'black'
-          this.g_color = 'red'
-          this.s_color = 'black'
+        c() {
+          this.course_url = course
+          this.home_url = home_no
+          this.user_url = user_no
         },
-        s() {
-          this.h_color = 'black'
-          this.g_color = 'black'
-          this.s_color = 'red'
+        u() {
+          this.user_url = user
+          this.course_url = course_no
+          this.home_url = home_no
         },
       },
       created: function() {
@@ -90,21 +103,16 @@
   left: 0;
   bottom: 0;
   box-sizing: border-box;
-  height: 3.5rem;
+  height: 15vw;
   border-top: gray solid 0.05rem;
   background: white;
   width: 100%;
 }
 .grid-cell {
-  border-radius: 0.1rem;
-  height: 3.5rem;
+  height: 15vw;
   display: flex;
   justify-content: center;
   align-content: center;
   /*background: red;*/
-}
-.grid-cell div{
-  width: 40px;
-  height: 40px;
 }
 </style>
