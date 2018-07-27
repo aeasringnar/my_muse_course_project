@@ -1,6 +1,6 @@
 <template>
     <div>
-      <mu-appbar style="width: 100%;height: 12vw;" color="primary">
+      <mu-appbar style="width: 100%;height: 11vw;" color="primary">
         <mu-button icon slot="left" @click="open = !open">
           <mu-icon size="32" value="menu"></mu-icon>
         </mu-button>
@@ -34,17 +34,18 @@
           <mu-col span="4">
             <div class="grid-cell" @click="h">
               <!--<mu-icon :color="h_color" size="40" value="home"></mu-icon>-->
-              <img :src="home_url" alt="..." style="height: 85%">
+              <img :src="home_url" alt="..." style="height: 10vw">
+              <!--<div style="width: 10vw;height: 10vw;background-color: red;"></div>-->
             </div></mu-col>
           <mu-col span="4">
             <div class="grid-cell" @click="c">
               <!--<mu-icon :color="g_color" size="40" value="grade"></mu-icon>-->
-              <img :src="course_url" alt="..." style="height: 90%">
+              <img :src="course_url" alt="..." style="height: 11vw">
             </div></mu-col>
           <mu-col span="4">
             <div class="grid-cell" @click="u">
               <!--<mu-icon :color="s_color" size="40" value="search"></mu-icon>-->
-              <img :src="user_url" alt="..." style="height: 85%">
+              <img :src="user_url" alt="..." style="height: 10vw;">
             </div></mu-col>
         </mu-row>
       </div>
@@ -103,7 +104,7 @@
   left: 0;
   bottom: 0;
   box-sizing: border-box;
-  height: 15vw;
+  height: 12vw;
   border-top: gray solid 0.05rem;
   background: white;
   width: 100%;
@@ -113,6 +114,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  /*align-items: center;*/
   /*background: red;*/
 }
 </style>
