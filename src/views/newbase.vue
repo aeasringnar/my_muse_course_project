@@ -35,7 +35,7 @@
   //   viewMode:'3D'//使用3D视图
   // });
   export default {
-    name: "base",
+    name: "newbase",
     data () {
       return {
         docked: false,

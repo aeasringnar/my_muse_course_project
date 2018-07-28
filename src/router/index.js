@@ -5,7 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
+  // mode:'history',
   routes: [
     // {
     //   path: '/',
@@ -19,9 +19,9 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'base',
+      name: 'newbase',
       redirect: '/home',
-      component: () => import('@/views/base'),
+      component: () => import('@/views/newbase'),
       children: [
         {
           path: 'home',

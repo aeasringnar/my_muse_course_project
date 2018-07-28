@@ -21,4 +21,8 @@ export default {
   color: #2c3e50;
   margin-top: 0px;
 }
+html,body,#app{
+  height: 100%;
+  width: 100%;
+}
 </style>
