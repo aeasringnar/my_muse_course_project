@@ -55,11 +55,13 @@
         this.home_url = home
         this.course_url = course_no
         this.user_url = user_no
+        this.$router.push({ name: 'home'})
       },
       course() {
         this.course_url = course
         this.home_url = home_no
         this.user_url = user_no
+        this.$router.push({ name: 'course'})
       },
       user() {
         this.user_url = user

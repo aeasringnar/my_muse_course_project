@@ -42,7 +42,9 @@
         open: false,
         position: 'left',
         clientHeight: '',
-        heightData: ''
+        heightData: '',
+        this_x: '',
+        this_y: ''
       }
     },
     mounted:function () {
@@ -54,9 +56,6 @@
       this.heightData = newheight + 'px'
     },
     methods: {
-      onComplete(data) {
-        console.log(data)
-      },
       init:function () {
         map = new AMap.Map('container',{
           resizeEnable: true,
@@ -72,6 +71,7 @@
 
         map.plugin('AMap.Geolocation', function () {
           var geolocation = new AMap.Geolocation({
+            useNative: true,         // 使用sdk辅助定位
             enableHighAccuracy: true,//是否使用高精度定位，默认:true
             timeout: 10000,
             maximumAge: 0,           //定位结果缓存0毫秒，默认：0
@@ -89,8 +89,9 @@
           // AMap.event.addListener(geolocation, 'complete',onComplete);//返回定位信息
           // AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
           AMap.event.addListener(geolocation, 'complete', function(data) {
-            data.position.getLng() //定位成功返回的经度
-            data.position.getLat() //定位成功返回的纬度
+            this.this_x = data.position.getLng() //定位成功返回的经度
+            this.this_y = data.position.getLat() //定位成功返回的纬度
+            alert(this.this_x,this.this_y)
           }); //返回定位信息
           AMap.event.addListener(geolocation, 'error', function(data) {
             if (data.info == 'FAILED') {

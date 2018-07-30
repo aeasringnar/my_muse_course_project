@@ -27,6 +27,11 @@ export default new Router({
           path: 'home',
           name: 'home',
           component: () => import('@/views/home')
+        },
+        {
+          path: 'course',
+          name: 'course',
+          component: () => import('@/views/course')
         }
       ]
     }
