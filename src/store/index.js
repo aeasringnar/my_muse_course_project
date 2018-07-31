@@ -4,32 +4,23 @@ import vuex from 'vuex'
 import { login, logout, getInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/user'
 
-Vue.use(vuex);
+import home_no from '../static/icon/home_no.png'
+import home from '../static/icon/home.png'
+import course_no from '../static/icon/course_no.png'
+import course from '../static/icon/course.png'
+import user_no from '../static/icon/user_no.png'
+import user from '../static/icon/user.png'
 
-// 设置token的相关信息
-// const TokenKey = 'BootstrapVue-Token'
-//
-// function getToken() {
-//   return Cookies.get(TokenKey)
-// }
-//
-// function setToken(token) {
-//   return Cookies.set(TokenKey, token)
-// }
-//
-// function removeToken() {
-//   return Cookies.remove(TokenKey)
-// }
-//
-// export function test() {
-//   return '987654'
-// }
+Vue.use(vuex);
 
 //state为访问状态对象 数字常量等
 const state = {
   x:5,
   token: getToken(),
-  nickname: ''
+  nickname: '',
+  home_url: home,
+  course_url: course_no,
+  user_url: user_no
 };
 //访问触发状态mutation是同步的
 //actions是异步的

@@ -7,15 +7,15 @@
         <mu-row>
           <mu-col span="4">
             <div class="grid-cell" @click="home">
-              <img :src="home_url" alt="..." style="height: 10vw">
+              <img :src="$store.state.home_url" alt="..." style="height: 10vw">
             </div></mu-col>
           <mu-col span="4">
             <div class="grid-cell" @click="course">
-              <img :src="course_url" alt="..." style="height: 11vw">
+              <img :src="$store.state.course_url" alt="..." style="height: 11vw">
             </div></mu-col>
           <mu-col span="4">
             <div class="grid-cell" @click="user">
-              <img :src="user_url" alt="..." style="height: 10vw;">
+              <img :src="$store.state.user_url" alt="..." style="height: 10vw;">
             </div></mu-col>
         </mu-row>
       </div>
@@ -29,11 +29,6 @@
   import course from '../static/icon/course.png'
   import user_no from '../static/icon/user_no.png'
   import user from '../static/icon/user.png'
-  // var map = new AMap.Map('container', {
-  //   zoom:11,//级别
-  //   center: [116.397428, 39.90923],//中心点坐标
-  //   viewMode:'3D'//使用3D视图
-  // });
   export default {
     name: "newbase",
     data () {
@@ -52,25 +47,47 @@
     },
     methods: {
       home() {
-        this.home_url = home
-        this.course_url = course_no
-        this.user_url = user_no
+        this.$store.state.home_url = home
+        this.$store.state.course_url = course_no
+        this.$store.state.user_url = user_no
         this.$router.push({ name: 'home'})
       },
       course() {
-        this.course_url = course
-        this.home_url = home_no
-        this.user_url = user_no
+        this.$store.state.course_url = course
+        this.$store.state.home_url = home_no
+        this.$store.state.user_url = user_no
         this.$router.push({ name: 'course'})
       },
       user() {
-        this.user_url = user
-        this.course_url = course_no
-        this.home_url = home_no
+        this.$store.state.user_url = user
+        this.$store.state.course_url = course_no
+        this.$store.state.home_url = home_no
       },
     },
     created: function() {
-    }
+    },
+    watch:{
+      $route(to,from){
+        console.log(to.path);
+        switch (to.path) {
+          case '/home':
+            this.home()
+            break
+          case '/course':
+            this.course()
+            break
+          case '/user':
+            this.user()
+            break
+          case '/login':
+            console.log(to.path);
+            break
+          default:
+            console.log(to.path);
+            break
+        }
+      }
+    },
   }
 </script>
 
