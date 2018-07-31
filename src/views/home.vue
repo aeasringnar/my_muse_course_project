@@ -51,7 +51,7 @@
       this.init()
       this.clientHeight = `${document.documentElement.clientHeight}`
       console.log(this.clientHeight)
-      var newheight = this.clientHeight - ((this.clientHeight) / 100) * 12
+      var newheight = this.clientHeight - 25 - ((this.clientHeight) / 100) * 12
       console.log(newheight)
       this.heightData = newheight + 'px'
     },
@@ -91,7 +91,7 @@
           AMap.event.addListener(geolocation, 'complete', function(data) {
             this.this_x = data.position.getLng() //定位成功返回的经度
             this.this_y = data.position.getLat() //定位成功返回的纬度
-            alert(this.this_x,this.this_y)
+            // alert(this.this_x,this.this_y)
           }); //返回定位信息
           AMap.event.addListener(geolocation, 'error', function(data) {
             if (data.info == 'FAILED') {
