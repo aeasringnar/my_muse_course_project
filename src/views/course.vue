@@ -1,60 +1,42 @@
 <template>
     <div>
-      <div id="container" :style="{height: heightData}"></div>
-    </div>
+      <!--<div id="container" :style="{height: heightData}"></div>-->
+      <p id="demo">点击这个按钮，获得您的坐标：</p>
+      <button @click="getLocation()">试一下</button>
+      </div>
 </template>
 
 <script>
   import BMap from 'BMap'
+  var x=document.getElementById("demo");
   export default {
     name: "course",
     data () {
       return {
-        docked: false,
-        open: false,
-        position: 'left',
-        clientHeight: '',
-        heightData: '',
-        this_x: '',
-        this_y: ''
+        x: '',
+        y: ''
       }
     },
-    mounted:function () {
-      this.init()
-      this.clientHeight = `${document.documentElement.clientHeight}`
-      console.log(this.clientHeight)
-      var newheight = this.clientHeight - ((this.clientHeight) / 100) * 12
-      console.log(newheight)
-      this.heightData = newheight + 'px'
-    },
     methods: {
-      init:function () {
-        var map = new BMap.Map("container");
-        var point = new BMap.Point(116.331398,39.897445);
-        map.centerAndZoom(point,12);
-        var geolocation = new BMap.Geolocation();
-// 开启SDK辅助定位
-        geolocation.enableSDKLocation();
-        geolocation.getCurrentPosition(function(r){
-          if(this.getStatus() == BMAP_STATUS_SUCCESS){
-            var mk = new BMap.Marker(r.point);
-            map.addOverlay(mk);
-            map.panTo(r.point);
-            // alert('您的位置：'+r.point.lng+','+r.point.lat);
-          }
-          else {
-            alert('failed'+this.getStatus());
-          }
-        });
-
+      // 29.768813   121.539836
+      showPosition(position) {
+        this.x = position.coords.latitude
+        this.y = position.coords.longitude
+        var xy = this.x + '/' + this.y
+        alert(xy)
+      },
+      getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(this.showPosition);
+        } else{alert('失败')}
       }
     }
     }
 </script>
 
 <style scoped>
-  #container{
-    width:100%;
-    /*height: 569.6px;*/
-  }
+  /*#container{*/
+    /*width:100%;*/
+    /*!*height: 569.6px;*!*/
+  /*}*/
 </style>

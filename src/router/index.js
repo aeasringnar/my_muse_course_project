@@ -38,13 +38,28 @@ var router = new Router({
           path: 'login',
           name: 'login',
           component: () => import('@/views/login')
+        },
+        {
+          path: 'amap',
+          name: 'amap',
+          component: () => import('@/views/amap_demo')
+        },
+        {
+          path: 'bmap',
+          name: 'bmap',
+          component: () => import('@/views/bmap_demo')
+        },
+        {
+          path: 'user',
+          name: 'user',
+          component: () => import('@/views/user')
         }
       ]
     }
   ]
 })
 
-const whiteList = ['/home','/login']  // 路由白名单，不需要登录的路由放在这里面
+const whiteList = ['/home','/login','/amap','/bmap','/course']  // 路由白名单，不需要登录的路由放在这里面
 // 路由判断。登录验证,如果没有登录，就全部定向到login界面。token就正常访问
 router.beforeEach((to,from,next) => {
   if (store.state.token) {

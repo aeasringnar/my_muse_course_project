@@ -62,6 +62,7 @@
         this.$store.state.user_url = user
         this.$store.state.course_url = course_no
         this.$store.state.home_url = home_no
+        this.$router.push({ name: 'user'})
       },
     },
     created: function() {
