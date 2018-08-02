@@ -1,14 +1,14 @@
 <template>
     <div>
       <!--<div id="container" :style="{height: heightData}"></div>-->
-      <p id="demo">点击这个按钮，获得您的坐标：</p>
+      <p>原生使用h5定位：</p>
+      <p>x坐标为：{{x}}y坐标为：{{y}}</p>
       <button @click="getLocation()">试一下</button>
       </div>
 </template>
 
 <script>
   import BMap from 'BMap'
-  var x=document.getElementById("demo");
   export default {
     name: "course",
     data () {
@@ -23,7 +23,7 @@
         this.x = position.coords.latitude
         this.y = position.coords.longitude
         var xy = this.x + '/' + this.y
-        alert(xy)
+        console.log(xy)
       },
       getLocation() {
         if (navigator.geolocation) {
