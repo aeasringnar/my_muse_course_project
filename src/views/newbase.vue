@@ -29,6 +29,17 @@
   import course from '../static/icon/course.png'
   import user_no from '../static/icon/user_no.png'
   import user from '../static/icon/user.png'
+  import $ from 'jquery'
+  var oHeight = $(document).height(); //屏幕当前的高度
+  // alert(oHeight)
+  $(window).resize(function(){
+    // alert('ok')
+    if($(document).height() < oHeight){
+      $(".footer").css("position","static");
+    }else{
+      $(".footer").css("position","fixed");
+    }
+  });
   export default {
     name: "newbase",
     data () {
@@ -66,6 +77,8 @@
       },
     },
     created: function() {
+      this.clientHeight = `${document.documentElement.clientHeight}`
+      // alert(this.clientHeight)
     },
     watch:{
       $route(to,from){
@@ -94,7 +107,7 @@
 
 <style scoped>
   .footer{
-    /*display: flex;*/
+    /*display: none;*/
     position: fixed;
     left: 0;
     bottom: 0;
