@@ -12,6 +12,7 @@
       <p>使用h5+定位：</p>
       <p>x坐标为：{{x}}y坐标为：{{y}}</p>
       <button @click="getLocation()">试一下</button>
+      <button type="button" @click="onPlusReady()">试一下(弹出)</button>
       <!--<div id="container" :style="{height: heightData}"></div>-->
       <mu-drawer :open.sync="open" :docked="docked" :left="position">
         <mu-list>
@@ -83,6 +84,13 @@
         plus.geolocation.getCurrentPosition( this.geoInf, function ( e ) {
           outSet( "获取位置信息失败："+e.message );
         }, {geocode:false} );
+      },
+      onPlusReady() {
+        plus.geolocation.getCurrentPosition(function(p){
+          alert('Geolocation\nLatitude:' + p.coords.latitude + '\nLongitude:' + p.coords.longitude + '\nAltitude:' + p.coords.altitude);
+        }, function(e){
+          alert('Geolocation error: ' + e.message);
+        } );
       }
     }
   }
